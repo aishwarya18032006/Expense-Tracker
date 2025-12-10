@@ -1,0 +1,123 @@
+/* frontend/src/index.css */
+
+/* ---------- Theme variables (light & dark) ---------- */
+:root{
+  --page-bg: #f6f7fb;
+  --card-bg: #ffffff;
+  --text-primary: #0f172a;
+  --muted: #6b7280;
+  --accent: #4f46e5;
+  --accent-contrast: #ffffff;
+  --success: #16a34a;
+  --danger: #ef4444;
+  --surface-shadow: 0 8px 24px rgba(15,23,42,0.06);
+}
+
+/* Dark theme variables (applied when html.dark exists) */
+html.dark {
+  --page-bg: #0b1020;
+  --card-bg: #071127;
+  --text-primary: #e6eef8;
+  --muted: #9aa7bd;
+  --accent: #7c6cff;
+  --accent-contrast: #0b1020;
+  --success: #16a34a;
+  --danger: #ff6b6b;
+  --surface-shadow: 0 8px 24px rgba(2,6,23,0.6);
+}
+
+/* ---------- Layout & base ---------- */
+html,body,#root{
+  height:100%;
+  margin:0;
+  background: var(--page-bg);
+  color: var(--text-primary);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Card look */
+.app-card{
+  background: var(--card-bg);
+  border-radius: .75rem;
+  box-shadow: var(--surface-shadow);
+  padding: 1rem;
+  border: 1px solid rgba(0,0,0,0.02);
+  color: var(--text-primary);
+}
+
+/* Header */
+.app-header {
+  background: transparent;
+  padding: .5rem 0;
+  margin-bottom: 1rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+/* Buttons */
+.btn-accent {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+}
+.btn-accent:hover {
+  filter: brightness(.95);
+}
+
+/* Small utilities */
+.kpi-value { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); }
+.kpi-label { color: var(--muted); font-size: .85rem; }
+
+/* Recent activity list */
+.activity-item { 
+  display:flex; justify-content:space-between; gap: .75rem; 
+  align-items:center; padding: .6rem; border-radius: .5rem; 
+  background: linear-gradient(180deg, rgba(0,0,0,0.00), rgba(0,0,0,0.00));
+  border: 1px solid rgba(0,0,0,0.03);
+}
+.activity-item + .activity-item { margin-top: .5rem; }
+
+/* micro animations */
+.fade-in { animation: fadeIn .45s ease both; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px);} to { opacity:1; transform:none;} }
+
+/* Form control tweaks (works with Bootstrap) */
+.form-control:focus {
+  box-shadow: 0 0 0 .15rem rgba(79,70,229,0.12);
+  border-color: rgba(79,70,229,0.8);
+  outline: none;
+}
+
+/* Placeholder faded look */
+::placeholder { color: #9ca3af; opacity:1; }
+.form-control::placeholder { color: #9ca3af; }
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  .kpi-value { font-size: 1.25rem; }
+  .app-card { padding: .75rem; }
+  .app-header { flex-direction: column; gap: .75rem; align-items: flex-start; }
+}
+
+/* Toggle switch simple style */
+.theme-toggle {
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+}
+.theme-toggle .btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:38px;
+  height:38px;
+  padding:0;
+  border-radius:8px;
+}
+
+/* small icon color */
+.icon-sun { color: #fbbf24; } /* amber */
+.icon-moon { color: #c7d2fe; } /* indigo-light */
